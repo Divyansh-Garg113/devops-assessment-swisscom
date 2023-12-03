@@ -1,3 +1,8 @@
+# NOTE
+
+The file `README_NOTES_DIVYANSH.md` under the folders terraform/ and cloudformation/ contains the inforamtion about the files created and changes made to achieve the desired output for this assignment.
+In case of any doubt, please reach out to me at divyansh112@hotmail.com
+
 # Technical Assignments
 
 The goal of this assignment is to evaluate your ability to work with Terraform and AWS services. We expect that a developer with some experience should be able to solve this within one to two hours.
