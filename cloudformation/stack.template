@@ -29,6 +29,9 @@ Resources:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
+      LoggingConfiguration:
+        DestinationBucketName: !Ref S3Bucket
+        LogFilePrefix: deleted-object-logs/
 
   S3BucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -71,6 +74,29 @@ Resources:
               StringEquals:
                 'aws:SourceAccount': !Ref 'AWS::AccountId'
 
+  S3LoggingBucketDeleteObjectPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref S3LoggingBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Sid: S3ServerAccessLogsPolicy
+            Action:
+              - 's3:DeleteObject'
+            Effect: Allow
+            Principal:
+              Service: logging.s3.amazonaws.com
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref S3LoggingBucket
+                - /*
+            Condition:
+              ArnLike:
+                'aws:SourceArn': !GetAtt S3LoggingBucket.Arn
+              StringEquals:
+                'aws:SourceAccount': !Ref 'AWS::AccountId'
 
 Outputs:
   S3BucketName:

@@ -1,4 +1,6 @@
-# Files created to solve the assignment
+# Solution
+
+# New files created under `/terraform` folder to achieve the desired solution.
 - dynamodb.tf
     - contains terraform configurations for dynamodb table `Files` with an attribute `Filename`
 
@@ -33,5 +35,9 @@
 
 # Changes made to execute the assignment
 
-I have updated the localstack image tag to "latest" in docker-compose.yml. The reason I had to change the image tag is that localstack was not able to create statefunction resource due to a bug with the provider. However, updating the image tag resolved the issue. The code is executing as expected on macos terminal.
-Moreover, to execute the assignment on linux, please feel free to change the localstack image tag back to 1.3.1. However, the same is not tested on linux with tag 1.3.1.
+I have updated the localstack image tag to `latest` inside `docker-compose.yml` file. The reason I had to change the image tag is that localstack was not able to create `statefunction` resource when run on `localstack:1.3.1`image. The difference in image compatibility with Linux and MacOS OS platforms might be the issue, but it is just an assumption and I am not fully sure of the root cause.
+However, updating the image tag resolved the issue. The code is executing as expected on macos terminal with `latest` tag.
+
+Also, please feel free to change the localstack image tag back to 1.3.1 for testing the solution on Linux. However, the same might work on Linux with `latest` tag of localstack docker image.
+
+I hope you liked my solution. I Look forward for a nice discussion.
